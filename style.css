@@ -1,0 +1,456 @@
+/* =========================================================
+   NETFLIX CLONE - style.css
+   Sections: 1. Variables  2. Reset  3. Buttons  4. Hero
+             5. Sections   6. Trending  7. Reasons  8. FAQ
+             9. Footer     10. Responsive
+   ========================================================= */
+
+/* ---------- 1. CSS VARIABLES ----------
+   Colors are stored once here so they can be reused everywhere */
+:root {
+  --red: #e50914;
+  /* Netflix red */
+  --red-hover: #c11119;
+  /* Darker red for hover state */
+  --black: #000;
+  --card: #192247;
+  /* Dark blue used for reason cards */
+  --gray: #333;
+  --text: #fff;
+  --muted: #b3b3b3;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- 2. RESET ----------
+   Removes the browser's default spacing so we start from a clean slate */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* padding and border count inside width */
+}
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---------- 3. BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  /* smooth color change on hover */
+}
+
+.btn-red {
+  background: var(--red);
+  color: var(--text);
+}
+
+.btn-red:hover {
+  background: var(--red-hover);
+}
+
+.btn-small {
+  padding: 7px 16px;
+  font-size: 0.95rem;
+}
+
+.btn-large {
+  padding: 14px 28px;
+  font-size: 1.4rem;
+}
+
+/* Visible outline for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---------- 4. HERO ---------- */
+.hero {
+  position: relative;
+  /* lets the curve be positioned inside it */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Two layers: dark gradient on top of the background image
+     so the white text stays readable */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.35) 40%,
+      #000
+    ),
+    url("images/heroImg.jpg") center / cover no-repeat;
+  overflow: hidden;
+}
+
+/* Header bar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  /* logo left, actions right */
+  align-items: center;
+  padding: 24px 5%;
+  position: relative;
+  z-index: 2;
+  /* keep it above the curve */
+}
+
+.logo {
+  color: var(--red);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.language {
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--text);
+  border: 1px solid #777;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+}
+
+/* Headline block, centered in the remaining space */
+.hero-content {
+  flex: 1;
+  /* fills the space under the header */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  /* scales with screen, min 2.2rem, max 4rem */
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 20px;
+}
+
+/* Email form (shared by hero and FAQ) */
+.signup {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.signup input {
+  flex: 1;
+  min-width: 0;
+  /* allows the input to shrink in flexbox */
+  padding: 16px;
+  font-size: 1rem;
+  color: var(--text);
+  background: rgba(22, 22, 22, 0.7);
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+
+.signup input::placeholder {
+  color: var(--muted);
+}
+
+/* Red curved glow at the bottom of the hero */
+.hero-curve {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -60px;
+  height: 120px;
+  border-radius: 50%;
+  /* turns the box into an ellipse */
+  background: #000;
+  border-top: 4px solid transparent;
+  box-shadow: 0 -8px 30px rgba(229, 9, 20, 0.7);
+  /* red glow upward */
+  z-index: 1;
+}
+
+/* ---------- 5. GENERIC SECTIONS ---------- */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 5%;
+}
+
+.section h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: 20px;
+}
+
+/* ---------- 6. TRENDING ROW ---------- */
+.poster-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  /* scroll sideways when cards don't fit */
+  padding-bottom: 12px;
+  scroll-snap-type: x proximity;
+  /* cards gently snap into place */
+}
+
+.poster {
+  position: relative;
+  flex: 0 0 160px;
+  /* fixed width, never shrink */
+  height: 230px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  scroll-snap-align: start;
+  transition: transform 0.25s;
+}
+
+.poster:hover {
+  transform: scale(1.06);
+}
+
+/* grow slightly on hover */
+
+.poster .title {
+  font-weight: 700;
+  font-size: 1rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Big rank number in the corner */
+.poster .rank {
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Different gradients stand in for real poster artwork */
+.p1 {
+  background: linear-gradient(160deg, #1d2b64, #f8cdda);
+}
+
+.p2 {
+  background: linear-gradient(160deg, #8e2de2, #4a00e0);
+}
+
+.p3 {
+  background: linear-gradient(160deg, #0f2027, #2c5364);
+}
+
+.p4 {
+  background: linear-gradient(160deg, #cb2d3e, #ef473a);
+}
+
+.p5 {
+  background: linear-gradient(160deg, #134e5e, #71b280);
+}
+
+.p6 {
+  background: linear-gradient(160deg, #f7971e, #ffd200);
+}
+
+.p7 {
+  background: linear-gradient(160deg, #373b44, #4286f4);
+}
+
+/* ---------- 7. REASONS TO JOIN ---------- */
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 equal columns */
+  gap: 16px;
+}
+
+.reason {
+  min-height: 220px;
+  padding: 24px 20px;
+  border-radius: 16px;
+  /* Diagonal gradient from dark blue to dark purple */
+  background: linear-gradient(135deg, var(--card), #1a0a2e);
+}
+
+.reason h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.reason p {
+  color: var(--muted);
+}
+
+/* ---------- 8. FAQ ---------- */
+.faq {
+  text-align: center;
+}
+
+.faq details {
+  background: var(--gray);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.faq summary {
+  list-style: none;
+  /* hide the default arrow */
+  cursor: pointer;
+  padding: 22px 24px;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Safari arrow */
+.faq summary::after {
+  content: "+";
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* plus icon */
+.faq details[open] summary::after {
+  content: "\00D7";
+}
+
+/* turns into × when open */
+
+.faq details p {
+  padding: 22px 24px;
+  font-size: 1.1rem;
+  border-top: 1px solid var(--black);
+  /* thin divider under the question */
+}
+
+.faq > .hero-text {
+  margin-top: 40px;
+}
+
+/* ---------- 9. FOOTER ---------- */
+.footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 5% 60px;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  text-decoration: underline;
+}
+
+.footer-links a:hover {
+  color: var(--text);
+}
+
+.footer .note {
+  font-size: 0.85rem;
+}
+
+/* ---------- 10. RESPONSIVE ----------
+   These rules only apply when the screen is narrower than the given width */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .reasons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 4 -> 2 columns */
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .header {
+    padding: 16px 5%;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .signup {
+    flex-direction: column;
+  }
+
+  /* stack input above button */
+  .btn-large {
+    font-size: 1.1rem;
+  }
+
+  .reasons {
+    grid-template-columns: 1fr;
+  }
+
+  /* single column */
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

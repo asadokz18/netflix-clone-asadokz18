@@ -1,0 +1,211 @@
+<!doctype html>
+<!-- Netflix landing page clone - pure HTML + CSS (no JavaScript) -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Makes the page scale properly on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Netflix Clone - Watch TV Shows Online</title>
+    <!-- Tab icon (the favicon.ico in the project root) -->
+    <link rel="icon" href="favicon.ico" />
+    <!-- All styling lives in style.css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ============ HERO SECTION ============ -->
+    <!-- Contains the header, headline and email form on top of the background image -->
+    <section class="hero">
+      <!-- Top bar: logo on the left, language + sign in on the right -->
+      <header class="header">
+        <!-- Text-based logo, styled red in CSS -->
+        <a href="#" class="logo">NETFLIX</a>
+
+        <div class="header-actions">
+          <!-- Language dropdown (visual only) -->
+          <select class="language" aria-label="Choose language">
+            <option>English</option>
+            <option>پښتو</option>
+            <option>اردو</option>
+          </select>
+          <a href="#" class="btn btn-red btn-small">Sign In</a>
+        </div>
+      </header>
+
+      <!-- Centered headline + signup form -->
+      <div class="hero-content">
+        <h1>Unlimited movies, TV shows, and more</h1>
+        <p class="hero-sub">Starts at $7.99. Cancel anytime.</p>
+        <p class="hero-text">
+          Ready to watch? Enter your email to create or restart your membership.
+        </p>
+
+        <!-- Email form: input and button sit side by side on desktop, stack on mobile -->
+        <form class="signup" action="#">
+          <input
+            type="email"
+            placeholder="Email address"
+            aria-label="Email address"
+            required
+          />
+          <button type="submit" class="btn btn-red btn-large">
+            Get Started &rsaquo;
+          </button>
+        </form>
+      </div>
+
+      <!-- Curved red glow at the bottom of the hero, drawn with CSS only -->
+      <div class="hero-curve"></div>
+    </section>
+
+    <!-- ============ TRENDING ROW ============ -->
+    <section class="section trending">
+      <h2>Trending Now</h2>
+
+      <!-- Horizontal scrolling row of poster cards -->
+      <ul class="poster-row">
+        <!-- Each poster uses a CSS gradient as a stand-in image. The number sits beside it. -->
+        <li class="poster p1">
+          <span class="rank">1</span><span class="title">Midnight Harbor</span>
+        </li>
+        <li class="poster p2">
+          <span class="rank">2</span><span class="title">Red Dunes</span>
+        </li>
+        <li class="poster p3">
+          <span class="rank">3</span><span class="title">The Last Signal</span>
+        </li>
+        <li class="poster p4">
+          <span class="rank">4</span><span class="title">Paper Kingdom</span>
+        </li>
+        <li class="poster p5">
+          <span class="rank">5</span><span class="title">Cold Orbit</span>
+        </li>
+        <li class="poster p6">
+          <span class="rank">6</span><span class="title">Glass Garden</span>
+        </li>
+        <li class="poster p7">
+          <span class="rank">7</span><span class="title">Wild Frequency</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ REASONS TO JOIN ============ -->
+    <section class="section">
+      <h2>More Reasons to Join</h2>
+
+      <!-- 4 cards laid out with CSS Grid -->
+      <div class="reasons">
+        <article class="reason">
+          <h3>Enjoy on your TV</h3>
+          <p>
+            Watch on Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray
+            players, and more.
+          </p>
+        </article>
+        <article class="reason">
+          <h3>Download your shows to watch offline</h3>
+          <p>Save your favorites easily and always have something to watch.</p>
+        </article>
+        <article class="reason">
+          <h3>Watch everywhere</h3>
+          <p>
+            Stream unlimited movies and TV shows on your phone, tablet, laptop,
+            and TV.
+          </p>
+        </article>
+        <article class="reason">
+          <h3>Create profiles for kids</h3>
+          <p>
+            Send kids on adventures with their favorite characters in a space
+            made just for them.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <!-- <details> opens and closes on click without any JavaScript -->
+      <details>
+        <summary>What is Netflix?</summary>
+        <p>
+          Netflix is a streaming service that offers a wide variety of
+          award-winning TV shows, movies, anime, and documentaries on thousands
+          of internet-connected devices.
+        </p>
+      </details>
+      <details>
+        <summary>How much does Netflix cost?</summary>
+        <p>
+          Watch Netflix on your smartphone, tablet, Smart TV, laptop, or
+          streaming device, all for one fixed monthly fee. Plans range from
+          $7.99 to $24.99 a month. No extra costs, no contracts.
+        </p>
+      </details>
+      <details>
+        <summary>Where can I watch?</summary>
+        <p>
+          Watch anywhere, anytime. Sign in with your account at netflix.com on
+          your computer or any internet-connected device that offers the Netflix
+          app.
+        </p>
+      </details>
+      <details>
+        <summary>How do I cancel?</summary>
+        <p>
+          Netflix is flexible. There are no annoying contracts and no
+          commitments. You can cancel your account online in two clicks.
+        </p>
+      </details>
+      <details>
+        <summary>What can I watch on Netflix?</summary>
+        <p>
+          Netflix has an extensive library of feature films, documentaries, TV
+          shows, anime, award-winning originals, and more. Watch as much as you
+          want, anytime you want.
+        </p>
+      </details>
+
+      <!-- Second signup prompt, repeated below the FAQ -->
+      <p class="hero-text">
+        Ready to watch? Enter your email to create or restart your membership.
+      </p>
+      <form class="signup" action="#">
+        <input
+          type="email"
+          placeholder="Email address"
+          aria-label="Email address"
+          required
+        />
+        <button type="submit" class="btn btn-red btn-large">
+          Get Started &rsaquo;
+        </button>
+      </form>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <p>Questions? Call 000-800-000-0000</p>
+      <!-- Footer links in 4 columns on desktop, 2 on mobile -->
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Media Center</a></li>
+        <li><a href="#">Investor Relations</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Ways to Watch</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Cookie Preferences</a></li>
+        <li><a href="#">Corporate Information</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <p class="note">
+        This is a learning project and is not affiliated with Netflix.
+      </p>
+    </footer>
+  </body>
+</html>
